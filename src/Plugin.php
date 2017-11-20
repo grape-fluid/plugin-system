@@ -45,7 +45,7 @@ class Plugin implements IPlugin
 
 
 	/**
-	 * @return array
+	 * @return array|\SplFileInfo[]
 	 */
 	public function getNeonConfigFilesPaths()
 	{
@@ -84,7 +84,14 @@ class Plugin implements IPlugin
 	 */
 	public function getName()
 	{
-		return str_replace('-', '.', Strings::webalize(get_called_class()));
+		$name = get_called_class();
+
+		if ($name == Plugin::class) {
+			$paths = explode(DIRECTORY_SEPARATOR, $this->getPluginDirectory());
+			$name.= "." . end($paths);
+		}
+
+		return str_replace('-', '.', Strings::webalize($name));
 	}
 
 }
