@@ -170,7 +170,7 @@ class Container
 	private function getCache()
 	{
 		if (!$this->cache) {
-			$this->cache = new Cache($this->cacheStorage);
+			$this->cache = new Cache($this->cacheStorage, "Fluid.Plugins");
 		}
 
 		return $this->cache;
