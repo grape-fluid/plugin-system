@@ -26,7 +26,7 @@ class Classes
 		for ($i = 0; $i < count($tokens); $i++) {
 			if($tokens[$i][0] == T_NAMESPACE AND $tokens[$i + 1][0] == T_WHITESPACE) {
 				$x = 2;
-				while(in_array($tokens[$i + $x][0], [T_NS_SEPARATOR, T_STRING])) {
+				while(in_array($tokens[$i + $x][0], [T_NS_SEPARATOR, T_STRING, T_NAME_QUALIFIED])) {
 					$namespace.= $tokens[$i + $x][1];
 					$x++;
 				}
